@@ -9,6 +9,7 @@ services:
       - "54320:5432"
     volumes:
       - cms_db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: 'root'
 
