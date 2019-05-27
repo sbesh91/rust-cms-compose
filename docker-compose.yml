@@ -24,6 +24,12 @@ services:
     volumes:
       -./.env:./usr/src/rust-cms/.env
 
+  frontend:
+    image: sbesh91/rust-cms-frontend:latest
+    container_name: cms_frontend
+    restart: always
+    ports: 
+      8080:8080
 
 volumes:
   cms_db_data:
