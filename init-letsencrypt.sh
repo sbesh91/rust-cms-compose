@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(sbesh.com www.sbesh.com)
+domains=(sbe.sh www.sbe.sh)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="s.beshensky@gmail.com" # Adding a valid address is strongly recommended
