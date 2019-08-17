@@ -10,13 +10,6 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: 'root'
-
-  # cache:
-  #   image: redis:5
-  #   container_name: cms_cache
-  #   restart: always
-  #   volumes:
-  #     - cms_cache_data:/var/lib/redis
     
   backend:
     image: sbesh91/rust-cms:latest
@@ -24,9 +17,14 @@ services:
     restart: always
     volumes:
       - ./.env:/usr/src/rust-cms/.env
+  
+  frontend:
+    image: sbesh91/rust-cms-frontend:ssr
+    container_name: cms_frontend
+    restart: always
 
   nginx:
-    image: sbesh91/rust-cms-frontend:latest
+    image: nginx:1.15.8
     container_name: nginx
     restart: always
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
@@ -40,6 +38,7 @@ services:
     expose:
       - 80
       - 443
+
   certbot:
     image: certbot/certbot
     container_name: certbot
