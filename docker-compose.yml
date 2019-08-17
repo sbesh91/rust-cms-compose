@@ -19,7 +19,7 @@ services:
       - ./.env:/usr/src/rust-cms/.env
   
   frontend:
-    image: sbesh91/rust-cms-frontend:ssr
+    image: sbesh91/rust-cms-frontend:latest
     container_name: cms_frontend
     restart: always
 
